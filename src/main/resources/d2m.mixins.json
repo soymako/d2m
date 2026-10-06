@@ -3,7 +3,9 @@
 	"package": "me.soymako.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ProjectileWeaponItemMixin",
+		"ProjectileHitMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

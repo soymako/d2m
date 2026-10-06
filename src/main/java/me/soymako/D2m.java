@@ -1,30 +1,38 @@
 package me.soymako;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import me.soymako.item.ModItems;
+
 public class D2m implements ModInitializer {
-	public static final String MOD_ID = "d2m";
+  public static final String MOD_ID = "d2m";
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+  public static D2m instance;
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+  public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-		LOGGER.info("Hello Fabric world!");
-	}
 
-	public static Identifier id(String path) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, path);
-	}
+  @Override
+  public void onInitialize() {
+    instance = this;
+    ModItems.initialize();
+    LOGGER.info("Hello Fabric world!");
+  }
+
+  public D2m getInstance(){
+    return instance;
+  }
+
+  public static Identifier id(String path) {
+    return Identifier.fromNamespaceAndPath(MOD_ID, path);
+  }
 }
